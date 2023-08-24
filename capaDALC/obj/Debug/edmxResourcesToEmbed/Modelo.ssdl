@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NettersDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ANUNCIO">
+    <Key>
+      <PropertyRef Name="idanuncio" />
+    </Key>
+    <Property Name="idanuncio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="20" />
+    <Property Name="idsector" Type="int" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="20" />
+    <Property Name="NumHoras" Type="int" Nullable="false" />
+    <Property Name="idusuario" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CONTRATO">
+    <Key>
+      <PropertyRef Name="idcontrato" />
+    </Key>
+    <Property Name="idcontrato" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idanuncio" Type="int" Nullable="false" />
+    <Property Name="idusuario" Type="int" Nullable="false" />
+    <Property Name="finalizado" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SECTOR">
+    <Key>
+      <PropertyRef Name="idsector" />
+    </Key>
+    <Property Name="idsector" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="USUARIO">
+    <Key>
+      <PropertyRef Name="idusuario" />
+    </Key>
+    <Property Name="idusuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="20" />
+    <Property Name="Apellidos" Type="varchar" MaxLength="20" />
+    <Property Name="Dni" Type="varchar" MaxLength="9" Nullable="false" />
+    <Property Name="Direccion" Type="varchar" MaxLength="20" />
+    <Property Name="Pass" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Saldo" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__ANUNCIO__idsecto__3A81B327">
+    <End Role="SECTOR" Type="Self.SECTOR" Multiplicity="1" />
+    <End Role="ANUNCIO" Type="Self.ANUNCIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SECTOR">
+        <PropertyRef Name="idsector" />
+      </Principal>
+      <Dependent Role="ANUNCIO">
+        <PropertyRef Name="idsector" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ANUNCIO__idusuar__3B75D760">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="ANUNCIO" Type="Self.ANUNCIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="idusuario" />
+      </Principal>
+      <Dependent Role="ANUNCIO">
+        <PropertyRef Name="idusuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CONTRATO__idanun__3E52440B">
+    <End Role="ANUNCIO" Type="Self.ANUNCIO" Multiplicity="1" />
+    <End Role="CONTRATO" Type="Self.CONTRATO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ANUNCIO">
+        <PropertyRef Name="idanuncio" />
+      </Principal>
+      <Dependent Role="CONTRATO">
+        <PropertyRef Name="idanuncio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CONTRATO__idusua__3F466844">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="CONTRATO" Type="Self.CONTRATO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="idusuario" />
+      </Principal>
+      <Dependent Role="CONTRATO">
+        <PropertyRef Name="idusuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="NettersDBModelStoreContainer">
+    <EntitySet Name="ANUNCIO" EntityType="Self.ANUNCIO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CONTRATO" EntityType="Self.CONTRATO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SECTOR" EntityType="Self.SECTOR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ANUNCIO__idsecto__3A81B327" Association="Self.FK__ANUNCIO__idsecto__3A81B327">
+      <End Role="SECTOR" EntitySet="SECTOR" />
+      <End Role="ANUNCIO" EntitySet="ANUNCIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ANUNCIO__idusuar__3B75D760" Association="Self.FK__ANUNCIO__idusuar__3B75D760">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="ANUNCIO" EntitySet="ANUNCIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CONTRATO__idanun__3E52440B" Association="Self.FK__CONTRATO__idanun__3E52440B">
+      <End Role="ANUNCIO" EntitySet="ANUNCIO" />
+      <End Role="CONTRATO" EntitySet="CONTRATO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CONTRATO__idusua__3F466844" Association="Self.FK__CONTRATO__idusua__3F466844">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="CONTRATO" EntitySet="CONTRATO" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

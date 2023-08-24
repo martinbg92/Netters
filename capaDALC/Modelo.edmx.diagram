@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a8ccfb627c8146dabeb0954f39e9bf8d" Name="Diagram1">
+        <EntityTypeShape EntityType="NettersDBModel.ANUNCIO" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="NettersDBModel.CONTRATO" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NettersDBModel.SECTOR" Width="1.5" PointX="0.625" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NettersDBModel.USUARIO" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="NettersDBModel.FK__ANUNCIO__idsecto__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="NettersDBModel.FK__ANUNCIO__idusuar__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="NettersDBModel.FK__CONTRATO__idanun__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="NettersDBModel.FK__CONTRATO__idusua__3F466844" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
